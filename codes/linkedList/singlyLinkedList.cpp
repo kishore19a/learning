@@ -212,4 +212,4 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-// g++ -std=c++11 create.cpp -o create
+// g++ -std=c++11 singlyLinkedList.cpp -o singlyLinkedList
