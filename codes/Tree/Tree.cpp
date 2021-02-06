@@ -210,6 +210,20 @@ void printLeftViewOfTree(Node* root)
     }
 }
 
+int rangeSumBST(Node* root, int low, int high) {
+    int sum{0};
+
+    if(root != nullptr)
+    {
+        if((root->data >= low) && (root->data <= high))
+            sum += root->data + rangeSumBST(root->left, low, high) + rangeSumBST(root->right, low, high);
+        else
+            sum += rangeSumBST(root->left, low, high) + rangeSumBST(root->right, low, high);
+    }
+    
+    return sum;
+}
+
 int main(int argc, char const *argv[])
 {
     // Create a new tree
@@ -289,6 +303,9 @@ int main(int argc, char const *argv[])
         std::cout << "Tree is balanced" << std::endl;
     else
         std::cout << "Tree is not balanced" << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "Range sum BST = " << rangeSumBST(root, 7, 15) << std::endl;
 
     return 0;
 }
